@@ -1,0 +1,39 @@
+﻿
+    <table class="table">
+        <tbody>
+            @for (int row = 0; row < size; row++)
+            {
+                <tr>
+                @for(int col = 0; col < size; col++)
+                {
+                    <td>
+                        <div class="col-sm @GetFormat(squares[row,col])" style="border: solid 1px black">
+                            @GetCharFromSquareState(squares[row, col])
+                        </div>
+                        
+                    </td>
+                }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+@code {
+
+    [Parameter]
+    public SquareStates[,] squares { get; set; }
+
+    [Parameter]
+    public int size { get; set; }
+
+    private char GetCharFromSquareState(SquareStates state)
+    {
+        return ViewFormatting.GetCharFromSquareState(state);
+    }
+
+    private string GetFormat(SquareStates state)
+    {
+        return ViewFormatting.GetFormat(state);
+    }
+}

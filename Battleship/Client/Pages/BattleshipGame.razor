@@ -1,55 +1,40 @@
 ﻿@page "/BattleshipGame"
+@using Battleship.Game
 @using Battleship.Model
 @using Battleship.Shared
 @inject HttpClient Http
+@inject IEngine Engine
 
 <PageTitle>Battleship Game</PageTitle>
 
-@if (forecasts == null)
+@if (grid == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <table class="table">
-        <tbody>
-            @for (int row = 0; row < size; row++)
-            {
-                <tr>
-                @for(int col = 0; col < size; col++)
-                {
-                    <td>
-                        <div class="col-sm @GetFormat(grid.Squares[row,col])" style="border: solid 1px black">
-                            @GetCharFromSquareState(grid.Squares[row, col])
-                        </div>
-                        
-                    </td>
-                }
-                </tr>
-            }
-        </tbody>
-    </table>
+    <GameGrid squares=grid.GetSquares() size=size></GameGrid>
+
+    <form>
+        <input type="text" @bind-value="coords">
+        <input type="submit" @onclick=OnClick>
+    </form>
 }
 
 @code {
-    private Grid grid = new Grid(10);
-    private int size = 10; // todo get from grid
-
-    private WeatherForecast[]? forecasts;
+    Grid grid { get; set; }
+    int size = 10; // todo get from grid
+    private string coords = "";
 
     protected override async Task OnInitializedAsync()
     {
-        
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        grid = Engine.CraeteGrid();
+
+        //forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
     }
 
-        private char GetCharFromSquareState(SquareStates state)
+    void OnClick()
     {
-        return ViewFormatting.GetCharFromSquareState(state);
-    }
-
-        private string GetFormat(SquareStates state)
-    {
-        return ViewFormatting.GetFormat(state);
+        var s = coords;
     }
 }
