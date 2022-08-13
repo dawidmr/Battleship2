@@ -1,18 +1,38 @@
 ﻿
-    <table class="table">
+    <table style="table-layout:fixed">
         <tbody>
+
+            <tr>
+            @for (int row = -1; row < size; row++)
+            {
+                <td style="width:50px; height:50px padding:unset">
+                    @if (row >= 0)
+                    {
+                        @GetCharFromInt(@row)
+                    }
+                </td>
+                
+            }
+            </tr>
+
             @for (int row = 0; row < size; row++)
             {
                 <tr>
-                @for(int col = 0; col < size; col++)
-                {
-                    <td>
-                        <div class="col-sm @GetFormat(squares[col,row])" style="border: solid 1px black">
-                            @GetCharFromSquareState(squares[col, row])
-                        </div>
-                        
-                    </td>
-                }
+                    @for(int col = -1; col < size; col++)
+                    {
+                        <td style="width:50px; height:50px padding:unset">
+                            @if (col == -1)
+                            {
+                                @(row + 1)
+                            }
+                            else
+                            {
+                                <div class="col-sm @GetFormat(squares[col,row])" style="border: solid 1px black">
+                                    @GetCharFromSquareState(squares[col, row])
+                                </div>
+                            }
+                        </td>
+                    }
                 </tr>
             }
         </tbody>
@@ -26,6 +46,11 @@
 
     [Parameter]
     public int size { get; set; }
+
+    private char GetCharFromInt(int number)
+    {
+        return Convert.ToChar(65 + number);
+    }
 
     private char GetCharFromSquareState(SquareState state)
     {

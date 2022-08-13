@@ -1,0 +1,8 @@
+﻿.gridcontainer {
+    display: table;
+    width: 100%;
+}
+
+.grid-column {
+    width: 800px;
+}

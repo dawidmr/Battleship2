@@ -45,22 +45,6 @@ namespace Battleship.Game
             return newState;
         }
 
-        public bool IsAnyVirginSquare()
-        {
-            for (int i = 0; i < Size; i++)
-            {
-                for (int j = 0; j < Size; j++)
-                {
-                    if (Squares[i, j] == SquareState.Virgin)
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
-
         private void ValidateTransition(SquareState oldState, SquareState newState)
         {
             if (_squareStateTransitions.IsValidTransition(oldState, newState) == false)

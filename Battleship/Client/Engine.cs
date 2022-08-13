@@ -24,6 +24,7 @@
 
             try
             {
+                // TODO: A4 i 4A
                 var column = coordString[0];
                 var row = int.Parse(coordString[1].ToString());
 
@@ -37,6 +38,21 @@
 
             _grid.ChangeSquareState(coordinates);
             return _grid.GetSquares();
+        }
+
+        public bool HasGameEnded()
+        {
+            var squares = _grid.GetSquares();
+
+            foreach (var square in squares)
+            {
+                if (square == SquareState.Ship)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
     }
