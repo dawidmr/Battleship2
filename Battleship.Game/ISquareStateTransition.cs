@@ -4,8 +4,7 @@ namespace Battleship.Game
 {
     public interface ISquareStateTransition
     {
-        SquareStates GetNewState(SquareStates currentState);
-        SquareStates GetNewState(SquareStates currentState, SquareStates suggestedState);
-        bool IsValidTransition(SquareStates oldState, SquareStates newState);
+        SquareState GetNewState(SquareState currentState);
+        bool IsValidTransition(SquareState oldState, SquareState newState);
     }
 }

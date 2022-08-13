@@ -4,37 +4,37 @@ namespace Battleship.Client
 {
     public class ViewFormatting
     {
-        public static string GetFormat(SquareStates state)
+        public static string GetFormat(SquareState state)
         {
             switch (state)
             {
-                case SquareStates.Ship:
+                case SquareState.Ship:
                     return "bg-primary";
-                case SquareStates.HittedShip:
+                case SquareState.HittedShip:
                     return "bg-warning";
-                case SquareStates.SunkShip:
+                case SquareState.SunkShip:
                     return "bg-danger";
-                case SquareStates.Virgin:
+                case SquareState.Virgin:
                     return "bg-info";
-                case SquareStates.MissedShot:
+                case SquareState.MissedShot:
                     return "bg-secondary";
                 default:
                     return "bg-white";
             }
         }
 
-        public static char GetCharFromSquareState(SquareStates state)
+        public static char GetCharFromSquareState(SquareState state)
         {
             switch (state)
             {
-                case SquareStates.Ship:
-                case SquareStates.HittedShip:
+                case SquareState.Ship:
+                case SquareState.HittedShip:
                     return 'H';
-                case SquareStates.Virgin:
+                case SquareState.Virgin:
                     return 'V';
-                case SquareStates.SunkShip:
+                case SquareState.SunkShip:
                     return 'X';
-                case SquareStates.MissedShot:
+                case SquareState.MissedShot:
                     return '*';
                 default:
                     return '?';

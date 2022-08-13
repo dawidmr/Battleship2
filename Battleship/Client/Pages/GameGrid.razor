@@ -7,8 +7,8 @@
                 @for(int col = 0; col < size; col++)
                 {
                     <td>
-                        <div class="col-sm @GetFormat(squares[row,col])" style="border: solid 1px black">
-                            @GetCharFromSquareState(squares[row, col])
+                        <div class="col-sm @GetFormat(squares[col,row])" style="border: solid 1px black">
+                            @GetCharFromSquareState(squares[col, row])
                         </div>
                         
                     </td>
@@ -22,17 +22,17 @@
 @code {
 
     [Parameter]
-    public SquareStates[,] squares { get; set; }
+    public SquareState[,] squares { get; set; }
 
     [Parameter]
     public int size { get; set; }
 
-    private char GetCharFromSquareState(SquareStates state)
+    private char GetCharFromSquareState(SquareState state)
     {
         return ViewFormatting.GetCharFromSquareState(state);
     }
 
-    private string GetFormat(SquareStates state)
+    private string GetFormat(SquareState state)
     {
         return ViewFormatting.GetFormat(state);
     }

@@ -7,7 +7,7 @@ namespace Battleship.Game
         protected const int maxAttempts = 100;
 
 
-        public List<Ship> Fill(ref SquareStates[,] squares, int size, IEnumerable<ShipPrototype> shipPrototypes)
+        public List<Ship> Fill(ref SquareState[,] squares, int size, IEnumerable<ShipPrototype> shipPrototypes)
         {
             int attemptCount = 0;
             var random = new Random();
@@ -49,20 +49,20 @@ namespace Battleship.Game
             return ships;
         }
 
-        public List<Coordinates> PlaceShipVertical(ref SquareStates[,] squares, int x, int y, int length)
+        public List<Coordinates> PlaceShipVertical(ref SquareState[,] squares, int x, int y, int length)
         {
             var coordinates = new List<Coordinates>();
 
             for (int i = y; i < y + length; i++)
             {
-                squares[x, i] = SquareStates.Ship;
-                coordinates.Add(new Coordinates(x, i));
+                squares[x, i] = SquareState.Ship;
+                coordinates.Add(new Coordinates((uint)x, (uint)i));
             }
 
             return coordinates;
         }
 
-        public bool IsPlaceForVerticalShip(SquareStates[,] squares, int maxArraySize, int x, int y, int length)
+        public bool IsPlaceForVerticalShip(SquareState[,] squares, int maxArraySize, int x, int y, int length)
         {
             if (y + length - 1 > maxArraySize)
             {
@@ -91,7 +91,7 @@ namespace Battleship.Game
         /// n - Neighbourhood (checked)
         /// * - Not checked
         /// </summary>
-        public bool IsEmptyNeighbourhood(SquareStates[,] squares, int size, int x, int y)
+        public bool IsEmptyNeighbourhood(SquareState[,] squares, int size, int x, int y)
         {
             for (int checkedY = y - 1; checkedY <= y + 1; checkedY++)
             {
@@ -104,7 +104,7 @@ namespace Battleship.Game
             return true;
         }
 
-        public bool AreEmpty3SquaresInRow(SquareStates[,] squares, int size, int x, int y)
+        public bool AreEmpty3SquaresInRow(SquareState[,] squares, int size, int x, int y)
         {
             if (y < 0 || y > size)
             {
@@ -114,18 +114,18 @@ namespace Battleship.Game
 
             if (x - 1 >= 0)
             {
-               if (squares[x-1, y] != SquareStates.Virgin)
+               if (squares[x-1, y] != SquareState.Virgin)
                     return false;
             }
 
-            if (squares[x, y] != SquareStates.Virgin)
+            if (squares[x, y] != SquareState.Virgin)
             {
                 return false;
             }
 
             if (x + 1 <= size)
             {
-                if (squares[x+1, y] != SquareStates.Virgin)
+                if (squares[x+1, y] != SquareState.Virgin)
                     return false;
             }
 

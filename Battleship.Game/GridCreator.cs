@@ -13,7 +13,7 @@ namespace Battleship.Game
             _squareStateTransition = squareStateTransition;
         }
 
-        public Grid CreateGrid(int size, IEnumerable<ShipPrototype> ships)
+        public IGrid CreateGrid(int size, IEnumerable<ShipPrototype> ships)
         {
             var grid = new Grid(size, _fillStrategy, _squareStateTransition);
             grid.Fill(ships);

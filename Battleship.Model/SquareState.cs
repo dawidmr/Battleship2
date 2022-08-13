@@ -1,6 +1,6 @@
 ﻿namespace Battleship.Model
 {
-    public enum SquareStates
+    public enum SquareState
     {
         Virgin,
         Ship,

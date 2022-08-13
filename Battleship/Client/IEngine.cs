@@ -1,11 +1,8 @@
-﻿using Battleship.Game;
-using Battleship.Model;
-
-namespace Battleship.Client
+﻿namespace Battleship.Client
 {
     public interface IEngine
     {
-        Grid CraeteGrid();
-        void Shot(ref Grid grid, Coordinates coordinates);
+        SquareState[,] CraeteGrid();
+        SquareState[,] Shot(string coordinatesString);
     }
 }
