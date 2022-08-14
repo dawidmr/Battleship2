@@ -14,20 +14,20 @@ namespace Battleship.Game
             int maxValue = size;
             var ships = new List<Ship>();
 
-            foreach (var ship in shipPrototypes?.OrderByDescending(x => x.size))
+            foreach (var ship in shipPrototypes?.OrderByDescending(x => x.Size))
             {
-                for (int i = 0; i < ship.count; i++)
+                for (int i = 0; i < ship.Count; i++)
                 {
                     while (attemptCount++ < maxAttempts)
                     {
                         int x = random.Next(maxValue);
                         int y = random.Next(maxValue);
 
-                        bool isPlace = IsPlaceForVerticalShip(squares, maxValue - 1, x, y, ship.size);
+                        bool isPlace = IsPlaceForVerticalShip(squares, maxValue - 1, x, y, ship.Size);
 
                         if (isPlace)
                         {
-                            var coordinates = PlaceShipVertical(ref squares, x, y, ship.size);
+                            var coordinates = PlaceShipVertical(ref squares, x, y, ship.Size);
                             ships.Add(new Ship(coordinates));
 
                             break;

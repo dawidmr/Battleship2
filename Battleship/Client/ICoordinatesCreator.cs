@@ -4,6 +4,6 @@ namespace Battleship.Client
 {
     public interface ICoordinatesCreator
     {
-        Coordinates GetCoordinates(char column, int row);
+        Coordinates GetCoordinates(string value);
     }
 }

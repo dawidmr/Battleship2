@@ -20,7 +20,7 @@ else
     <input type="button" disabled=@(stillInGame == false) value="Shot" @onclick=OnClick>
 
     <br />
-    <input type="text" disabled=@stillInGame value="FINISH"/>
+    <input type="text" hidden=@stillInGame value="FINISH"/>
 }
 
 @code {
@@ -42,5 +42,6 @@ else
         coords = string.Empty;
         stillInGame = !Engine.HasGameEnded();
         StateHasChanged();
+        
     }
 }
