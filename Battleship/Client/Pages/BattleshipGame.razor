@@ -1,24 +1,29 @@
 ﻿@page "/BattleshipGame"
 @using Battleship.Game
 @using Battleship.Model
-@using Battleship.Shared
 @inject HttpClient Http
 @inject IEngine Engine
 
 <PageTitle>Battleship Game</PageTitle>
 
-@if (squares == null || gridSize == 0)
+@if ((squares == null || gridSize == 0) && (isError == false))
 {
     <p><em>Loading...</em></p>
 }
 else
 {
     <GameGrid squares=squares size=gridSize></GameGrid>
-
     <br />
-    <input type="text" @bind-value="textInput" disabled=@hasGameEnded>
-    <input type="button" disabled=@hasGameEnded value="Shot" @onclick=ShotOnClick>
-    <input type="button" disabled=@(hasGameEnded == false) value="Play again" @onclick=PlayAgainOnClick>
+
+    <div hidden=@isError>
+        <input type="text" @bind-value="textInput" disabled=@hasGameEnded>
+        <input type="button" disabled=@hasGameEnded value="Shot" @onclick=ShotOnClick>
+        <input type="button" disabled=@(hasGameEnded == false) value="Play again" @onclick=PlayAgainOnClick>
+    </div>
+
+    <div hidden=@(isError == false) class="alert alert-danger" role="alert">
+        Error: @errorMessage
+    </div>
 }
 
 @code {
@@ -26,10 +31,14 @@ else
     private int gridSize = 0;
     private string textInput;
     private bool hasGameEnded;
+    private bool isError;
+    private string errorMessage = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
         PrepareGame();
+
+        (isError, errorMessage) = Engine.GetError();
     }
 
     public async Task ShotOnClick() 
@@ -41,11 +50,15 @@ else
         {
             textInput = "FINISH";
         }
+
+        (isError, errorMessage) = Engine.GetError();
     }
 
     public async Task PlayAgainOnClick() 
     {
         PrepareGame();
+
+        (isError, errorMessage) = Engine.GetError();
     }
     
     private void PrepareGame()

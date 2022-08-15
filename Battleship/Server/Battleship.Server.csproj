@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Client\Battleship.Client.csproj" />
-    <ProjectReference Include="..\Shared\Battleship.Shared.csproj" />
   </ItemGroup>
 
 
