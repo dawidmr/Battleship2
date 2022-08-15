@@ -1,9 +1,9 @@
-﻿namespace Battleship.Client
+﻿namespace Battleship.Client;
+
+public interface IEngine
 {
-    public interface IEngine
-    {
-        SquareState[,] CraeteGrid();
-        bool HasGameEnded();
-        SquareState[,] Shot(string coordinatesString);
-    }
+    SquareState[,] CraeteGrid();
+    int GetGridSize();
+    bool HasGameEnded();
+    SquareState[,] Shot(string coordinatesString);
 }

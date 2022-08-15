@@ -1,12 +1,11 @@
-﻿namespace Battleship.Client
+﻿namespace Battleship.Client;
+
+public class BattleshipOptions
 {
-    public class BattleshipOptions
-    {
-        public const string Option = "Battleship";
+    public const string Option = "Battleship";
 
-        public int Size { get; set; } = 0;
+    public int GridSize { get; set; } = 0;
 
-        public List<ShipPrototype> Ships { get; set; }
+    public List<ShipPrototype> Ships { get; set; } = new List<ShipPrototype>();
 
-    }
 }

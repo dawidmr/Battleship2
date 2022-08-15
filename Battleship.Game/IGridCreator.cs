@@ -1,9 +1,6 @@
-﻿using Battleship.Model;
+﻿namespace Battleship.Game;
 
-namespace Battleship.Game
+public interface IGridCreator
 {
-    public interface IGridCreator
-    {
-        IGrid CreateGrid(int size, IEnumerable<ShipPrototype> ships);
-    }
+    IGrid CreateGrid(int size, IEnumerable<ShipPrototype> ships);
 }

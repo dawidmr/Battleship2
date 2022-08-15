@@ -1,9 +1,8 @@
-﻿namespace Battleship.Game
+﻿namespace Battleship.Game;
+
+internal class FailedToFillGridWithShipsException : Exception
 {
-    internal class FailedToFillGridWithShipsException : Exception
+    public FailedToFillGridWithShipsException(string? message) : base(message)
     {
-        public FailedToFillGridWithShipsException(string? message) : base(message)
-        {
-        }
     }
 }

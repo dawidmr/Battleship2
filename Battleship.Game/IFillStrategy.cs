@@ -1,9 +1,6 @@
-﻿using Battleship.Model;
+﻿namespace Battleship.Game;
 
-namespace Battleship.Game
+public interface IFillStrategy
 {
-    public interface IFillStrategy
-    {
-        List<Ship> Fill(ref SquareState[,] squares, int size, IEnumerable<ShipPrototype> shipPrototypes);
-    }
+    List<Ship> Fill(ref SquareState[,] squares, int size, IEnumerable<ShipPrototype> shipPrototypes);
 }
