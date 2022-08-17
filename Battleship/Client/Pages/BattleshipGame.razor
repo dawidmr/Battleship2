@@ -1,7 +1,6 @@
 ﻿@page "/BattleshipGame"
 @using Battleship.Game
 @using Battleship.Model
-@inject HttpClient Http
 @inject IEngine Engine
 
 <PageTitle>Battleship Game</PageTitle>
@@ -28,7 +27,7 @@ else
     <br />
     <table>
         <tr>
-            <td><input type="checkbox" @bind=@isShipsVisible @oninput=CheckboxChecked /></td>
+            <td><input type="checkbox" @bind=@isShipsVisible /></td>
             <td>Ships visible</td>
         </tr>
      </table>
@@ -51,11 +50,6 @@ else
         PrepareGame();
 
         (isError, errorMessage) = Engine.GetError();
-    }
-
-    public async Task CheckboxChecked()
-    {
-        
     }
 
     public async Task ShotOnClick() 

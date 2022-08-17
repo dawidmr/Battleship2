@@ -20,15 +20,4 @@ public class ViewFormatting
                 return "bg-white";
         }
     }
-
-    public static char GetCharFromSquareState(SquareState state)
-    {
-        switch (state)
-        {
-            case SquareState.MissedShot:
-                return '*';
-            default:
-                return ' ';
-        }
-    }
 }

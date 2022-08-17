@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Battleship.Server", "Battleship\Server\Battleship.Server.csproj", "{886C03E6-FEF2-4878-AB93-7BCF91125047}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Battleship.Client", "Battleship\Client\Battleship.Client.csproj", "{91E2CF6D-E7C9-4209-B0F3-CCC987616AD0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Battleship.Model", "Battleship.Model\Battleship.Model.csproj", "{460C4F82-43B3-4F7B-A3D3-CC3121ABEBA6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Battleship.Game", "Battleship.Game\Battleship.Game.csproj", "{FA743750-6398-442A-B675-7E38DC2B0292}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battleship.Tests", "Battleship.Tests\Battleship.Tests.csproj", "{C75B1E83-6432-4F26-9415-FA637AAB9699}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Battleship.Tests", "Battleship.Tests\Battleship.Tests.csproj", "{C75B1E83-6432-4F26-9415-FA637AAB9699}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{886C03E6-FEF2-4878-AB93-7BCF91125047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{886C03E6-FEF2-4878-AB93-7BCF91125047}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{886C03E6-FEF2-4878-AB93-7BCF91125047}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{886C03E6-FEF2-4878-AB93-7BCF91125047}.Release|Any CPU.Build.0 = Release|Any CPU
 		{91E2CF6D-E7C9-4209-B0F3-CCC987616AD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{91E2CF6D-E7C9-4209-B0F3-CCC987616AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91E2CF6D-E7C9-4209-B0F3-CCC987616AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
