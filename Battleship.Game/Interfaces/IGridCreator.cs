@@ -1,4 +1,4 @@
-﻿namespace Battleship.Game;
+﻿namespace Battleship.Game.Interfaces;
 
 public interface IGridCreator
 {

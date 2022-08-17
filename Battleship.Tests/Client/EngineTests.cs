@@ -1,6 +1,8 @@
 ﻿using Battleship.Client;
 using Battleship.Client.Game;
+using Battleship.Client.Interfaces;
 using Battleship.Game;
+using Battleship.Game.Interfaces;
 using Battleship.Model;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -11,7 +13,7 @@ namespace Battleship.Tests.Client;
 public class EngineTests
 {
     [TestMethod]
-    public void CreateGrid_Test()
+    public void CreateGrid_GridCreatorUsed()
     {
         var gridCreator = new Mock<IGridCreator>();
         gridCreator.Setup(x => x.CreateGrid(It.IsAny<int>(), It.IsAny<IEnumerable<ShipPrototype>>()));
@@ -37,7 +39,7 @@ public class EngineTests
     [DataTestMethod]
     [DataRow(SquareState.HittedShip, true)]
     [DataRow(SquareState.Ship, false)]
-    public void HasGameEnded_Test(SquareState squareState, bool hasGameEndedExpected)
+    public void HasGameEnded_Positive(SquareState squareState, bool hasGameEndedExpected)
     {
         var grid = new Mock<IGrid>();
         grid

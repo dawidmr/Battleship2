@@ -1,4 +1,6 @@
-﻿namespace Battleship.Client.Game;
+﻿using Battleship.Client.Interfaces;
+
+namespace Battleship.Client.Game;
 
 public class GameConfigurator : IGameConfigurator
 {

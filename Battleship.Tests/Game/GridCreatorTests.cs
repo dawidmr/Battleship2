@@ -1,4 +1,5 @@
 ﻿using Battleship.Game;
+using Battleship.Game.Interfaces;
 using Battleship.Model;
 using Moq;
 

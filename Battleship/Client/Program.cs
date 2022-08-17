@@ -1,5 +1,7 @@
 using Battleship.Client;
 using Battleship.Client.Game;
+using Battleship.Client.Interfaces;
+using Battleship.Game.Interfaces;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

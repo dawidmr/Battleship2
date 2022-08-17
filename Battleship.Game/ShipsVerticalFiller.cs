@@ -1,4 +1,6 @@
-﻿namespace Battleship.Game;
+﻿using Battleship.Game.Interfaces;
+
+namespace Battleship.Game;
 
 public class ShipsVerticalFiller : IFillStrategy
 {

@@ -1,4 +1,7 @@
-﻿namespace Battleship.Client.Game;
+﻿using Battleship.Client.Interfaces;
+using Battleship.Game.Interfaces;
+
+namespace Battleship.Client.Game;
 
 public class Engine : IEngine
 {
