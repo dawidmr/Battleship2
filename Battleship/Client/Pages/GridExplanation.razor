@@ -1,0 +1,25 @@
+﻿<table>
+    <tr>
+        <td class="col-sm @GetFormat(SquareState.Ship)" style="width: 50px"></td>
+        <td>Ship</td>
+    </tr>
+    <tr>
+        <td class="col-sm @GetFormat(SquareState.HittedShip)" style="width: 50px"></td>
+        <td>Hitted Ship</td>
+    </tr>
+    <tr>
+        <td class="col-sm @GetFormat(SquareState.SunkShip)" style="width: 50px"></td>
+        <td>Sunk Ship</td>
+    </tr>
+    <tr>
+        <td class="col-sm @GetFormat(SquareState.MissedShot)" style="width: 50px"></td>
+        <td>Missed Shot</td>
+    </tr>
+</table>
+
+@code {
+    private string GetFormat(SquareState state)
+    {
+        return ViewFormatting.GetFormat(state, showShips: true);
+    }
+}

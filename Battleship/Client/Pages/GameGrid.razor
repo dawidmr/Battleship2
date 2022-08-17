@@ -27,8 +27,8 @@
                             }
                             else
                             {
-                                <div class="col-sm @GetFormat(squares[col,row])" style="border: solid 1px black">
-                                    @GetCharFromSquareState(squares[col, row])
+                                <div class="col-sm @GetFormat(squares[col,row])" style="border: solid 1px black; width:50px; height:50px; padding:unset">
+                                     
                                 </div>
                             }
                         </td>
@@ -47,18 +47,16 @@
     [Parameter]
     public int size { get; set; }
 
+    [Parameter]
+    public bool isShipsVisible { get; set; }
+
     private char GetCharFromInt(int number)
     {
         return Convert.ToChar(65 + number);
     }
 
-    private char GetCharFromSquareState(SquareState state)
-    {
-        return ViewFormatting.GetCharFromSquareState(state);
-    }
-
     private string GetFormat(SquareState state)
     {
-        return ViewFormatting.GetFormat(state);
+        return ViewFormatting.GetFormat(state, isShipsVisible);
     }
 }

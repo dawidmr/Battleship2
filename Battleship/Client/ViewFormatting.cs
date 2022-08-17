@@ -2,12 +2,12 @@
 
 public class ViewFormatting
 {
-    public static string GetFormat(SquareState state)
+    public static string GetFormat(SquareState state, bool showShips)
     {
         switch (state)
         {
             case SquareState.Ship:
-                return "bg-primary";
+                return showShips ? "bg-primary" : "bg-info";
             case SquareState.HittedShip:
                 return "bg-warning";
             case SquareState.SunkShip:
@@ -25,17 +25,10 @@ public class ViewFormatting
     {
         switch (state)
         {
-            case SquareState.Ship:
-            case SquareState.HittedShip:
-                return 'H';
-            case SquareState.Virgin:
-                return 'V';
-            case SquareState.SunkShip:
-                return 'X';
             case SquareState.MissedShot:
                 return '*';
             default:
-                return '?';
+                return ' ';
         }
     }
 }

@@ -12,7 +12,7 @@
 }
 else
 {
-    <GameGrid squares=squares size=gridSize></GameGrid>
+    <GameGrid squares=squares size=gridSize isShipsVisible=isShipsVisible></GameGrid>
     <br />
 
     <div hidden=@isError>
@@ -24,10 +24,22 @@ else
     <div hidden=@(isError == false) class="alert alert-danger" role="alert">
         Error: @errorMessage
     </div>
+
+    <br />
+    <table>
+        <tr>
+            <td><input type="checkbox" @bind=@isShipsVisible @oninput=CheckboxChecked /></td>
+            <td>Ships visible</td>
+        </tr>
+     </table>
+    <br />     
+
+    <GridExplanation />
 }
 
 @code {
     private SquareState[,]? squares = null;
+    private bool isShipsVisible;
     private int gridSize = 0;
     private string textInput;
     private bool hasGameEnded;
@@ -39,6 +51,11 @@ else
         PrepareGame();
 
         (isError, errorMessage) = Engine.GetError();
+    }
+
+    public async Task CheckboxChecked()
+    {
+        
     }
 
     public async Task ShotOnClick() 
