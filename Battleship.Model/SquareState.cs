@@ -1,11 +1,10 @@
-﻿namespace Battleship.Model
+﻿namespace Battleship.Model;
+
+public enum SquareState
 {
-    public enum SquareState
-    {
-        Virgin,
-        Ship,
-        HittedShip,
-        SunkShip,
-        MissedShot
-    }
+    Virgin,
+    Ship,
+    HittedShip,
+    SunkShip,
+    MissedShot
 }
