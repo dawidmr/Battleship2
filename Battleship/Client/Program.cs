@@ -1,4 +1,5 @@
 using Battleship.Client;
+using Battleship.Client.Game;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -8,6 +9,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped<IGridCreator, GridCreator>();
 builder.Services.AddScoped<IEngine, Engine>();
+builder.Services.AddScoped<IGameConfigurator, GameConfigurator>();
 builder.Services.AddScoped<ISquareStateTransition, SquareStateTransition>();
 builder.Services.AddScoped<IFillStrategy, ShipsVerticalFiller>();
 builder.Services.AddScoped<ICoordinatesInterpreter, CoordinatesInterpreter>();

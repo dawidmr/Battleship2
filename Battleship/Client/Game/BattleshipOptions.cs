@@ -1,4 +1,4 @@
-﻿namespace Battleship.Client;
+﻿namespace Battleship.Client.Game;
 
 public class BattleshipOptions
 {

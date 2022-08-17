@@ -1,32 +1,33 @@
-﻿namespace Battleship.Client;
+﻿namespace Battleship.Client.Game;
 
 public class Engine : IEngine
 {
     private readonly IGridCreator _gridCreator;
     private readonly ICoordinatesInterpreter _coordinatesCreator;
-    private readonly IConfiguration _configuration;
+    private readonly IGameConfigurator _configurator;
     private readonly ILogger<IEngine> _logger;
-    private IGrid _grid;
+    protected IGrid? _grid;
 
     private string errorMessage = string.Empty;
     private bool isError = false;
 
-    public Engine(IGridCreator gridCreator, ICoordinatesInterpreter coordinatesCreator, IConfiguration configuration, ILogger<IEngine> logger)
+    public Engine(
+        IGridCreator gridCreator, 
+        ICoordinatesInterpreter coordinatesCreator, 
+        IGameConfigurator configurator, 
+        ILogger<IEngine> logger)
     {
         _gridCreator = gridCreator;
         _coordinatesCreator = coordinatesCreator;
-        _configuration = configuration;
+        _configurator = configurator;
         _logger = logger;
     }
 
-    public SquareState[,] CraeteGrid()
+    public SquareState[,]? CraeteGrid()
     {
         try
         {
-            var config = new BattleshipOptions();
-            _configuration.GetSection(BattleshipOptions.Option).Bind(config);
-
-            ValidateConfiguration(config);
+            var config = _configurator.GetConfig();
 
             _grid = _gridCreator.CreateGrid(config.GridSize, config.Ships);
             return _grid.GetSquares();
@@ -34,12 +35,17 @@ public class Engine : IEngine
         catch (Exception ex)
         {
             HandleError(ex, "Failed to create a Grid");
-            return null;
+            return default;
         }
     }
 
     public SquareState[,] Shot(string coordString)
     {
+        if (_grid == null)
+        {
+            HandleError(null, "Failed to create a grid");
+        }
+
         try
         {
             Coordinates coordinates;
@@ -50,7 +56,7 @@ public class Engine : IEngine
             }
             catch
             {
-                throw new IncorrectCoordinatesException(coordString);
+                return _grid.GetSquares();
             }
 
             _grid.ChangeSquareState(coordinates);
@@ -59,7 +65,7 @@ public class Engine : IEngine
         catch (Exception ex)
         {
             HandleError(ex, $"Failed to Shot with coordinates: {coordString}");
-            return default;
+            return _grid.GetSquares();
         }
     }
 
@@ -92,18 +98,7 @@ public class Engine : IEngine
         return true;
     }
 
-    private void ValidateConfiguration(BattleshipOptions config)
-    {
-        if (config.GridSize < 1 ||
-            config.GridSize > 26 || // letters in alphabet count 
-            config.Ships.Count < 1 ||
-            config.Ships.Any(ship => ship.Size > config.GridSize))
-        {
-            throw new WrongConfigurationException();
-        }
-    }
-
-    private void HandleError(Exception ex, string message)
+    private void HandleError(Exception? ex, string message)
     {
         errorMessage = message;
         isError = true;

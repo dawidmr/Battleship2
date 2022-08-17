@@ -1,13 +1,10 @@
-﻿using Battleship.Model;
+﻿namespace Battleship.Game;
 
-namespace Battleship.Game
+public interface IGrid
 {
-    public interface IGrid
-    {
-        int Size { get; }
+    int Size { get; }
 
-        SquareState ChangeSquareState(Coordinates coordinates);
-        void Fill(IEnumerable<ShipPrototype> shipPrototypes);
-        SquareState[,] GetSquares();
-    }
+    SquareState ChangeSquareState(Coordinates coordinates);
+    void Fill(IEnumerable<ShipPrototype> shipPrototypes);
+    SquareState[,] GetSquares();
 }

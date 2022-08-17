@@ -1,7 +1,7 @@
 ﻿using Battleship.Game;
 using Battleship.Model;
 
-namespace Battleship.Tests
+namespace Battleship.Tests.Game
 {
     [TestClass]
     public class ShipsVerticalFillerTests
@@ -52,7 +52,7 @@ namespace Battleship.Tests
         [DataRow(1, 2)]
         [DataRow(2, 10)]
         [TestMethod]
-        public void IsPlaceForVerticalShip_(int gridSize, int shipSize)
+        public void IsPlaceForVerticalShip_Negative(int gridSize, int shipSize)
         {
             var result = IsPlaceForVerticalShipTest(gridSize, shipSize);
 
@@ -90,23 +90,6 @@ namespace Battleship.Tests
             Assert.IsTrue(result.First().X == x && result.First().Y == y);
         }
 
-        [DataTestMethod]
-        [DataRow(0, 0)]
-        [DataRow(3, 3)]
-        [DataRow(2, 2)]
-        [TestMethod]
-        public void IsEmptyNeighbourhood_Positive(int x, int y)
-        {
-            var filler = new ShipsVerticalFiller();
-            const int gridSize = 4;
-            var squares = new SquareState[gridSize, gridSize];
-            FillWithVirgin(squares, gridSize);
-
-            var result = filler.IsEmptyNeighbourhood(squares, gridSize, x, y);
-
-            Assert.IsTrue(result);
-        }
-
         private bool IsPlaceForVerticalShipTest(int gridSize, int shipSize)
         {
             var filler = new ShipsVerticalFiller();
@@ -117,17 +100,6 @@ namespace Battleship.Tests
         private IEnumerable<ShipPrototype> PrepareShips(Dictionary<int, int> shipsSizeCount)
         {
             return shipsSizeCount.Select(s => new ShipPrototype(name: null, size: s.Key, count: s.Value));
-        }
-
-        private void FillWithVirgin(SquareState[,] squares, int size)
-        {
-            for (int i = 0; i < size; i++)
-            {
-                for (int j = 0; j < size; j++)
-                {
-                    squares[i, j] = SquareState.Virgin;
-                }
-            }
         }
     }
 }

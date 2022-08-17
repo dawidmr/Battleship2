@@ -2,7 +2,7 @@
 
 public interface IEngine
 {
-    SquareState[,] CraeteGrid();
+    SquareState[,]? CraeteGrid();
     (bool, string) GetError();
     int GetGridSize();
     bool HasGameEnded();
